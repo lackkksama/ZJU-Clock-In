@@ -36,7 +36,7 @@ class ClockIn(object):
         self.password = password
         self.eai_sess = eai_sess
         self.sess = requests.Session()
-        self.ocr = ddddocr.DdddOcr()
+        #self.ocr = ddddocr.DdddOcr()
 
     def login(self):
         """Login to ZJU platform"""
@@ -71,14 +71,14 @@ class ClockIn(object):
         today = datetime.date.today()
         return "%4d%02d%02d" % (today.year, today.month, today.day)
 
-    def get_captcha(self):
+    #def get_captcha(self):
         """Get CAPTCHA code"""
-        cookie_dict = {'eai-sess': self.eai_sess}
-        self.sess.cookies = requests.cookies.cookiejar_from_dict(cookie_dict)
-        resp = self.sess.get(self.CAPTCHA_URL)
-        captcha = self.ocr.classification(resp.content)
-        print("验证码：", captcha)
-        return captcha
+        #cookie_dict = {'eai-sess': self.eai_sess}
+        #self.sess.cookies = requests.cookies.cookiejar_from_dict(cookie_dict)
+        #resp = self.sess.get(self.CAPTCHA_URL)
+        #captcha = self.ocr.classification(resp.content)
+        #print("验证码：", captcha)
+        #return captcha
 
     def get_info(self, html=None):
         """Get hitcard info, which is the old info with updated new time."""
